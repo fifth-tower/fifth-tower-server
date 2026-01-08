@@ -1,0 +1,1 @@
+drop table social_report;

@@ -1,0 +1,65 @@
+[package]
+name = "fifth-tower-server"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+
+[features]
+db_pro = []
+
+[workspace]
+members = ["migration"]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+authors = ["gj <gj88@gmail.com>"]
+
+[dependencies]
+actix-web.workspace = true
+actix-cors.workspace = true
+tracing.workspace = true
+tracing-subscriber = { workspace = true, features = ["tracing"] }
+serde.workspace = true
+fs_extra.workspace = true
+sea-orm = { workspace = true, features = [
+    "sqlx-postgres",
+    "runtime-tokio-rustls",
+    "macros",
+    "debug-print",
+] }
+chrono.workspace = true
+semver.workspace = true
+tokio = { workspace = true, features = ["macros", "rt-multi-thread"] }
+multimap.workspace = true
+
+tower = { workspace = true, features = [
+    "server-lib",
+    "server-model",
+    "management-model",
+    "dev",
+] }
+
+
+[workspace.dependencies]
+sea-orm = { version = "1.1", features = [
+    "sqlx-postgres",
+    "runtime-tokio-rustls",
+    "macros",
+    "debug-print",
+] }
+
+actix-web = { version = "4.10" }
+actix-cors = "0.7"
+actix-files = "0.6"
+dotenvy = "0.15.7"
+tracing = "0.1.40"
+tracing-subscriber = { version = "0.3.18", features = ["tracing"] }
+fs_extra = "1.3.0"
+chrono = "0.4"
+semver = "1"
+multimap = "0.10.0"
+serde = { version = "1", features = ["derive"] }
+codee = { version = "0.2", features = ["bincode_serde", "base64"] }
+tower = { path = "../fifth-tower", features = ["server-lib", "server-model"] }
+tokio = { version = "1", features = ["macros", "rt-multi-thread"] }
